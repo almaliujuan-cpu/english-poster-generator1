@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 17.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="zh-CN"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;英语早读海报生成器&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@import url('https://fonts.googleapis.com/css2?family=Zcool+KuaiLe&amp;family=Nunito:wght@400;700&amp;display=swap');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body { font-family: 'Nunito', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.kid-font { font-family: 'Zcool KuaiLe', cursive; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.poster-preview { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.word-tag { display: inline-block; background: #fff; padding: 4px 12px; border-radius: 20px; margin: 4px; font-size: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 2px solid #ffd93d; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.sentence-highlight { background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); padding: 2px 8px; border-radius: 4px; font-weight: bold; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@media print { .no-print { display: none !important; } .poster-preview { box-shadow: none; } }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body class="p-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="max-w-6xl mx-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;header class="text-center mb-8 text-white"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-4xl kid-font mb-2"&gt;🌟 英语早读海报生成器 🌟&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;选择教材，自动生成精美早读海报&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/header&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="grid md:grid-cols-3 gap-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- 控制面板 --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white rounded-3xl p-6 shadow-2xl no-print"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl kid-font text-purple-600 mb-4"&gt;⚙️ 设置&lt;/h2&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="mb-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;label class="block font-bold mb-2"&gt;📚 教材版本&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;select id="textbook" class="w-full p-3 border rounded-xl bg-purple-50" onchange="loadData()"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;option value="pep3"&gt;人教版三年级上&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;option value="pep4"&gt;人教版四年级上&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;option value="pep5"&gt;人教版五年级上&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;option value="pep6"&gt;人教版六年级上&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="mb-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;label class="block font-bold mb-2"&gt;📖 单元&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;select id="unit" class="w-full p-3 border rounded-xl bg-blue-50" onchange="generatePoster()"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;option value=""&gt;请选择单元&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button onclick="generatePoster()" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 rounded-xl shadow-lg hover:scale-105 transition kid-font"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>✨ 生成海报</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="mt-4 p-3 bg-yellow-50 rounded-lg text-sm text-gray-600"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p&gt;💡 &lt;b&gt;使用提示：&lt;/b&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p&gt;1. 选择教材和单元&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p&gt;2. 点击"生成海报"&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p&gt;3. 下载图片或打印&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- 海报区域 --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="md:col-span-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div id="poster" class="poster-preview rounded-3xl p-8 min-h-[600px] relative"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="text-center mb-6 border-b-4 border-orange-400 pb-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span class="bg-white px-4 py-1 rounded-full text-sm text-gray-600" id="poster-meta"&gt;请选择单元&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h2 class="text-4xl kid-font text-orange-600 mt-2" id="poster-title"&gt;等待生成...&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="mb-6 bg-white/80 rounded-2xl p-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-bold text-purple-600 mb-3"&gt;🎯 重点单词&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div id="word-list" class="flex flex-wrap"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-2xl p-6 shadow-lg mb-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-bold text-blue-600 mb-4"&gt;📖 晨读短文&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div id="passage-content" class="text-lg leading-relaxed text-gray-800"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-yellow-50 rounded-2xl p-4 border-2 border-yellow-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-lg font-bold text-orange-600 mb-2"&gt;🔑 重点句型&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;ul id="sentence-list" class="space-y-2 text-gray-700"&gt;&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="mt-6 text-center text-gray-500 text-sm border-t-2 border-dashed pt-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p&gt;🌟 每日一读，英语进步看得见 🌟&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="mt-4 flex gap-4 no-print justify-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button onclick="downloadPoster()" class="bg-green-500 text-white px-6 py-2 rounded-full font-bold hover:bg-green-600"&gt;💾 下载图片&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button onclick="window.print()" class="bg-blue-500 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-600"&gt;🖨️ 打印&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 教材数据库（JSON格式，方便老师修改）</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const textbookDB = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"pep3": {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: "人教版三年级上",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>units: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>id: 1, title: "Hello!",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>words: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "ruler", cn: "尺子", py: "/ˈruːlər/"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "pencil", cn: "铅笔", py: "/ˈpensl/"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "eraser", cn: "橡皮", py: "/ɪˈreɪsər/"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "crayon", cn: "蜡笔", py: "/ˈkreɪən/"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "bag", cn: "书包", py: "/bæɡ/"}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>sentences: ["Hello, I'm...", "I have a...", "What's your name?"],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>template: "school"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>id: 2, title: "Colours",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>words: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "red", cn: "红色", py: "/red/"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "green", cn: "绿色", py: "/ɡriːn/"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "yellow", cn: "黄色", py: "/ˈjeləʊ/"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "blue", cn: "蓝色", py: "/bluː/"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "black", cn: "黑色", py: "/blæk/"}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>sentences: ["I see...", "Show me...", "What colour is it?"],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>template: "colors"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"pep4": {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: "人教版四年级上",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>units: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>id: 1, title: "My Classroom",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>words: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "classroom", cn: "教室", py: "/ˈklɑːsruːm/"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "window", cn: "窗户", py: "/ˈwɪndəʊ/"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "blackboard", cn: "黑板", py: "/ˈblækbɔːd/"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "light", cn: "灯", py: "/laɪt/"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{en: "picture", cn: "图画", py: "/ˈpɪktʃər/"}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>sentences: ["Where is...?", "It's near...", "Let's clean..."],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>template: "classroom"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 短文生成模板</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const templates = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>school: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"Hello! I am a happy student. I have a new {w1}. It is nice. I also have a {w2} and a {w3}. Look! This is my {w4}. I put my {w5} in my bag. I love school!",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"Good morning! Welcome to my desk. Here is my {w1}. It is long. Can you see my {w2}? It is in my bag. I use my {w3} to draw pictures. My {w4} is red. I like my school things!"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>colors: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"I love colors! Look at the sky. It is {w1}. The grass is {w2}. I have a {w3} apple. It is sweet. My dress is {w4}. What color do you like? I like {w5}!",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"Wow! So many colors! The sun is {w3}. The sea is {w4}. My cat is {w5}. I paint with {w1} and {w2}. Colors make me happy!"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>classroom: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"This is my {w1}. It is big and clean. Look at the {w2}. It is open. The {w3} is black. The {w4} is bright. I like my {w5} on the wall. I love my classroom!",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"Welcome to our {w1}! Please look at the {w2}. It is clean. We write on the {w3}. Turn on the {w4}. Look at the {w5}. It is beautiful. Let's study here!"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function loadData() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const textbook = document.getElementById('textbook').value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const unitSelect = document.getElementById('unit');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const data = textbookDB[textbook];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>unitSelect.innerHTML = '&lt;option value=""&gt;请选择单元&lt;/option&gt;';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (data) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>data.units.forEach(unit =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const option = document.createElement('option');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>option.value = JSON.stringify(unit);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>option.textContent = `Unit ${unit.id} - ${unit.title}`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>unitSelect.appendChild(option);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function generatePoster() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const unitSelect = document.getElementById('unit');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!unitSelect.value) return;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const unit = JSON.parse(unitSelect.value);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const textbook = document.getElementById('textbook');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const textbookName = textbook.options[textbook.selectedIndex].text;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 生成短文</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const templateList = templates[unit.template] || templates.school;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let passage = templateList[Math.floor(Math.random() * templateList.length)];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 替换单词</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>unit.words.forEach((word, index) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>passage = passage.replace(`{w${index+1}}`, `&lt;span class="sentence-highlight"&gt;${word.en}&lt;/span&gt;`);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 更新界面</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('poster-meta').textContent = `${textbookName} · Unit ${unit.id}`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('poster-title').textContent = unit.title;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 单词列表</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const wordList = document.getElementById('word-list');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>wordList.innerHTML = '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>unit.words.forEach(word =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const tag = document.createElement('span');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>tag.className = 'word-tag';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>tag.innerHTML = `&lt;b&gt;${word.en}&lt;/b&gt;&lt;br&gt;&lt;small style="color:#666"&gt;${word.cn}&lt;/small&gt;&lt;br&gt;&lt;small style="color:#999;font-size:10px"&gt;${word.py}&lt;/small&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>wordList.appendChild(tag);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 短文</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('passage-content').innerHTML = `&lt;p class="text-xl leading-loose"&gt;${passage}&lt;/p&gt;`;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 句型</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const sentenceList = document.getElementById('sentence-list');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>sentenceList.innerHTML = '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>unit.sentences.forEach(sent =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const li = document.createElement('li');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>li.innerHTML = `&lt;span class="text-orange-500 mr-2"&gt;▸&lt;/span&gt;&lt;b&gt;${sent}&lt;/b&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>sentenceList.appendChild(li);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function downloadPoster() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const poster = document.getElementById('poster');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>html2canvas(poster, {scale: 2}).then(canvas =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const link = document.createElement('a');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>link.download = `英语早读海报_${new Date().toLocaleDateString()}.png`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>link.href = canvas.toDataURL();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>link.click();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 初始化</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>loadData();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
