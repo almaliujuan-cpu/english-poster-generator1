@@ -1,0 +1,235 @@
+{
+  "version": "1.0",
+  "lastUpdate": "2024-01-15",
+  "textbooks": [
+    {
+      "id": "pep3",
+      "name": "人教版三年级上",
+      "units": [
+        {
+          "unitId": 1,
+          "title": "Hello!",
+          "words": ["ruler", "pencil", "eraser", "crayon", "bag"],
+          "sentences": ["Hello, I'm...", "I have a..."]
+        }
+      ]
+    }
+  ]
+}
+第3步：开启GitHub Pages
+在仓库页面，点击 Settings（设置）
+左侧菜单点击 Pages
+Source 选择 Deploy from a branch
+Branch 选择 main，文件夹选择 /(root)
+点击 Save
+等待1-2分钟，刷新页面，会看到提示：Your site is published at https://你的用户名.github.io/english-poster-generator/
+第4步：访问网站
+直接访问上面的链接即可使用
+手机访问：同样链接，自动适配手机屏幕
+🔄 后续更新方法
+场景1：老师要添加新单元单词
+进入GitHub仓库
+点击 index.html 文件
+点击右上角 ✏️ 编辑按钮（铅笔图标）
+找到 <script> 标签内的 textbookDB 数据
+按照格式添加新的单元数据：
+JavaScript
+复制
+{
+    id: 3, 
+    title: "新单元名称",
+    words: [
+        {en: "apple", cn: "苹果", py: "/ˈæpl/"},
+        // ...更多单词
+    ],
+    sentences: ["句型1", "句型2"],
+    template: "school" // 或 colors, animals等
+}
+滚动到底部，点击 Commit changes 保存
+网站自动更新（2分钟内生效）
+场景2：批量导入数据（高级）
+如果数据量大，建议使用GitHub Desktop：
+
+下载 https://desktop.github.com/
+克隆你的仓库到本地
+用Excel整理单词表，保存为CSV
+使用在线工具将CSV转为JSON
+替换本地 data.json 文件
+提交并推送
+🌐 绑定自定义域名（可选）
+如果你想使用类似 zaoduxxx.com 的域名：
+
+购买域名（推荐阿里云/腾讯云，首年10-30元）
+在仓库 Settings → Pages → Custom domain 输入你的域名
+在域名后台添加DNS记录：
+类型：CNAME
+主机记录：www
+记录值：你的用户名.github.io
+等待DNS生效（通常10分钟-24小时）
+🛠️ 方案B：动态部署（GitHub + Vercel）
+如果你需要：
+
+后台管理界面（非技术老师也能添加单词）
+学生朗读录音功能
+使用AI自动生成短文
+部署步骤：
+同样先在GitHub创建仓库并上传代码
+注册 https://vercel.com（用GitHub账号登录）
+在Vercel点击 New Project，导入你的GitHub仓库
+如果需要后端，创建 api/generate.js 文件（Serverless Function）
+Vercel会自动部署，每次推送代码自动更新
+✅ 部署检查清单
+完成部署后，请确认：
+
+手机能正常访问
+点击"生成海报"能正常显示
+下载图片功能正常
+打印页面布局正确（图片不溢出）
+加载速度可接受（国内访问建议加CDN）
+国内加速建议：
+如果访问较慢，可以将JS库改为国内CDN：
+
+HTML
+复制
+<!-- 将 -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- 替换为 -->
+<script src="https://cdn.bootcdn.net/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"></script>
+需要我帮你调整任何特定功能，或者教如何配置自定义域名吗？
+
+引用
+开启GitHub Pages
+在仓库页面，点击 Settings（设置）
+左侧菜单点击 Pages
+Source 选择 Deploy from a branch
+Branch 选择 main，文件夹选择 /(root)
+点击 Save
+
+以上环节的save按钮无法点击，是什么原因
+展开
+回答
+遇到"Save"按钮灰色无法点击的情况，通常有以下几个原因，请按顺序排查：
+
+🔍 常见原因及解决方案
+1. 仓库为空（最常见原因）
+GitHub Pages要求仓库至少有一个文件才能启用。
+
+检查方法：
+
+进入仓库主页，看是否显示 "This repository is empty"
+或者文件列表只有 README.md 而没有 index.html
+解决方法：
+先上传 index.html 文件：
+
+点击 Add file → Create new file
+文件名输入 index.html
+内容先随便写点HTML（哪怕只有 <h1>Hello</h1>）
+点击底部 Commit new file
+然后再去 Settings → Pages 尝试
+2. 分支名称不匹配
+你的默认分支可能是 master 而不是 main（老账号常见）。
+
+检查方法：
+
+在仓库主页看文件列表上方，显示的是 master 还是 main？
+解决方法：
+
+如果在Pages设置里选不到 main，试试选 master
+或者先确认默认分支：Settings → Branches → Default branch
+3. 仓库是Private（私有）
+GitHub Pages免费版只能用于 Public（公开） 仓库。
+
+检查方法：
+
+仓库名旁边是否有 🔒 锁图标？
+解决方法：
+Settings → General → Danger Zone → Change repository visibility → Make public
+
+4. 页面未完全加载
+有时GitHub的JavaScript没加载完。
+
+解决方法：
+
+刷新页面（F5 或 Ctrl+R）
+换浏览器试试（推荐Chrome或Edge）
+清除缓存后重试
+5. 账号类型限制
+确认你登录的是自己的账号（不是组织账号受限）
+新注册账号可能有功能限制（需邮箱验证）
+🛠️ 如果还是不行，试试这个备用方案
+方案：通过上传文件自动启用
+有时不用去Settings页面，上传特定文件会自动触发：
+
+在仓库主页点击 Add file → Upload files
+上传一个 index.html 文件（内容可以用下面的简单版本）
+提交后等待2分钟
+直接访问 https://你的用户名.github.io/仓库名/
+如果能访问，说明Pages已自动启用
+极简测试文件内容：
+
+HTML
+复制
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>测试页面</title>
+</head>
+<body>
+    <h1>Hello GitHub Pages!</h1>
+    <p>如果看到这个，说明部署成功了</p>
+</body>
+</html>
+🔄 终极替代方案：使用 GitHub Actions
+如果Settings里的Pages选项始终无法使用，可以用GitHub Actions强制部署：
+
+在仓库页面点击 Actions 标签
+点击 set up a workflow yourself
+粘贴以下代码：
+YAML
+复制
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+点击 Start commit → Commit new file
+等待1分钟，点击 Actions 标签看运行状态
+成功后自动开启Pages
+📸 正常情况下的界面参考
+正常的Pages设置页面应该长这样：
+
+Text
+复制
+GitHub Pages
+[√] Deploy from a branch
+
+Branch:
+[main ▼]  [/(root) ▼]    ← 这两个下拉框都能选
+[Save]                      ← 白色/蓝色可点击按钮
+如果 Save 是灰色的，99%是因为上面两个下拉框有一个没选，或者选了无效的分支。
+
+你现在的情况属于哪种？ 告诉我具体现象（比如下拉框能否打开、显示什么选项），我可以给你更精确的解决方案。
+
+引用
+选择其他模型回答
+猜你想问
+仓库文件如何检查？
+分支名称如何查看？
+仓库私有怎么改公开？
+页面加载不全怎么办？
+账号类型如何确认？
